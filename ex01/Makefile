@@ -1,6 +1,6 @@
 .PHONY : all re fclean clean
 
-NAME			= Borderlands_00
+NAME			= Borderlands_01
 
 MAKEFLAGS		+= -j $$(nproc)
 
@@ -13,7 +13,8 @@ INCLUDE_DIR		= inc/
 INCLUDES 		= -I $(INCLUDE_DIR)
 
 SRCS			=	src/main.cpp	\
-					src/ClapTrap.cpp
+					src/ClapTrap.cpp \
+					src/ScavTrap.cpp
 
 OBJS			= $(patsubst %.cpp,$(OBJ_DIR)%.o,$(SRCS))
 DEPENDENCIES	= $(OBJS:.o=.d)

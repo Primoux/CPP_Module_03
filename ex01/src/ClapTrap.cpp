@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Claptrap.cpp                                       :+:      :+:    :+:   */
+/*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 06:56:29 by enchevri          #+#    #+#             */
-/*   Updated: 2026/01/02 11:55:04 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2026/01/02 12:27:21 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 #include "iostream"
+#include "trap.h"
 #include <ostream>
 
 using std::endl;
 using std::string;
 
+ClapTrap::ClapTrap() : 
+_name("DefaultClapTrap"), _hitPoints(10), _energyPoints(10), _attackPoints(0) 
+{	
+	std::cout << CLAPTRAP "DefaultClapTrap" RESET " created" << endl;
+}
+
 ClapTrap::ClapTrap(string name) : 
 _name(name), _hitPoints(10), _energyPoints(10), _attackPoints(0)
 {
-	std::cout << name << " created" << endl;
+	std::cout << CLAPTRAP << name << RESET " created" << endl;
 }
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << this->_name << " destroyed" << endl;
+	std::cout << CLAPTRAP << this->_name << RESET " destroyed" << endl;
 }
 
 ClapTrap &ClapTrap::operator=(ClapTrap const &other)
@@ -77,11 +84,16 @@ void ClapTrap::setHitPoints(unsigned int points)
 	this->_hitPoints = points;
 }
 
+void ClapTrap::setName(const string &name)
+{
+	this->_name = name;
+}
+
 void ClapTrap::attack(const string &target)
 {
 	if (this->_energyPoints == 0)
 	{
-		std::cout	<< *this << " can't attacked "
+		std::cout	<< *this << " can't attack "
 					<< target << " no energy points left" << endl;
 		return;
 	}
@@ -92,7 +104,7 @@ void ClapTrap::attack(const string &target)
 		return;
 	}
 	std::cout	<< *this << " attacked "
-				<< target << " and dealed "
+				<< target << " and dealt "
 				<< this->getAttackPoints() << endl;
 	
 	this->setEnergyPoints(this->getEnergyPoints() - 1);
@@ -104,11 +116,11 @@ void ClapTrap::takeDamage(unsigned int amount)
 
 	if (currentHealth == 0)
 	{
-		std::cout	<< "Chill bro, " << *this << " is dead" << std::endl;
+		std::cout << "Chill bro, " << *this << " is dead" << endl;
 		return;
 	}
 
-	std::cout	<< *this << " took " << amount << " damage" << endl;
+	std::cout << *this << " took " << amount << " damage" << endl;
 
 	unsigned int newHealth;
 	if (amount >= currentHealth)
@@ -127,16 +139,16 @@ void ClapTrap::beRepaired(unsigned int amount)
 	unsigned int currentHealth = this->getHitPoints();
 	if (currentEnergyPoints == 0)
 	{
-		std::cout	<< *this << " can't repair himself no energy points left" << endl;
+		std::cout << *this << " can't repair himself no energy points left" << endl;
 		return;
 	}
 	else if (currentHealth == 0)
 	{
-		std::cout	<< *this << " can't repair himself because he's dead" << endl;
+		std::cout << *this << " can't repair himself because he's dead" << endl;
 		return;
 	}
 
-	std::cout	<< *this << " healed " << amount << " hit points" << endl;
+	std::cout << *this << " healed " << amount << " hit points" << endl;
 	
 	unsigned int newHealth = currentHealth + amount;
 	unsigned int newEnergyPoints = currentEnergyPoints - 1;
