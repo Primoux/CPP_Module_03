@@ -28,9 +28,9 @@ class Claptrap
 
 	// GETTER
 	const string &getName(void) const;
-	int getHitPoints(void) const;
-	int getEnergyPoints(void) const;
-	int getAttackPoints(void) const;
+	unsigned int getHitPoints(void) const;
+	unsigned int getEnergyPoints(void) const;
+	unsigned int getAttackPoints(void) const;
 
 	// SETTER
 	void setEnergyPoints(unsigned int points);

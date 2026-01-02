@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 06:56:29 by enchevri          #+#    #+#             */
-/*   Updated: 2026/01/02 07:57:32 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2026/01/02 08:47:36 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,10 @@
 using std::endl;
 using std::string;
 
-Claptrap::Claptrap(string name) : _name(name), _hitPoints(10),
-	_energyPoints(10), _attackPoints(0)
+Claptrap::Claptrap(string name) : 
+_name(name), _hitPoints(10), _energyPoints(10), _attackPoints(0)
 {
 	std::cout << name << " created" << endl;
-	return ;
 }
 
 Claptrap::~Claptrap()
@@ -48,17 +47,17 @@ const string &Claptrap::getName(void) const
 	return (this->_name);
 }
 
-int Claptrap::getHitPoints(void) const
+unsigned int Claptrap::getHitPoints(void) const
 {
 	return (this->_hitPoints);
 }
 
-int Claptrap::getEnergyPoints(void) const
+unsigned int Claptrap::getEnergyPoints(void) const
 {
 	return (this->_energyPoints);
 }
 
-int Claptrap::getAttackPoints(void) const
+unsigned int Claptrap::getAttackPoints(void) const
 {
 	return (this->_attackPoints);
 }
@@ -80,14 +79,17 @@ void Claptrap::setHitPoints(unsigned int points)
 
 void Claptrap::attack(const string &target)
 {
-	if (this->_energyPoints > 0)
+	if (this->_energyPoints == 0)
 	{
-		std::cout << *this << " attacked " << target << " and dealed " << this->getAttackPoints() << endl;
-		this->setEnergyPoints(this->getEnergyPoints() - 1);
+		std::cout << *this << " can't attacked " << target << " no energy points left" << endl;
 		return;
 	}
-	
-	std::cout << *this << " can't attacked " << target << " no energy points left" << endl;
+	else if (this->_hitPoints == 0)
+	{
+		std::cout << *this << " can't attacked " << target << " he's already dead" << endl;
+		return;
+	}
+	std::cout << *this << " attacked " << target << " and dealed " << this->getAttackPoints() << endl;		this->setEnergyPoints(this->getEnergyPoints() - 1);
 }
 
 void Claptrap::takeDamage(unsigned int amount)
@@ -111,4 +113,27 @@ void Claptrap::takeDamage(unsigned int amount)
 	this->setHitPoints(newHealth);
 	if (newHealth == 0)
 		std::cout << *this << " died RIP" << endl;
+}
+
+void Claptrap::beRepaired(unsigned int amount)
+{
+	unsigned int currentEnergyPoints = getEnergyPoints();
+	unsigned int currentHealth = this->getHitPoints();
+	if (currentEnergyPoints == 0)
+	{
+		std::cout << *this << " can't repair himself no energy points left" << endl;
+		return;
+	}
+	else if (currentHealth == 0)
+	{
+		std::cout << *this << " can't repair himself cause he's dead" << endl;
+		return;
+	}
+
+	std::cout << *this << " healed " << amount << " hit points" << endl;
+	
+	unsigned int newHealth = currentHealth + amount;
+	unsigned int newEnergyPoints = currentEnergyPoints - 1;
+	this->setHitPoints(newHealth);
+	this->setEnergyPoints(newEnergyPoints);
 }
