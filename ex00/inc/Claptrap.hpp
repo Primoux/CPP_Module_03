@@ -14,9 +14,10 @@ class Claptrap
 
   public:
 	// CONSTRUCTOR
+	Claptrap();
 	Claptrap(string name);
-	~Claptrap();
 	Claptrap(Claptrap const &original);
+	~Claptrap();
 
 	// OPERATOR
 	Claptrap &operator=(Claptrap const &other);
