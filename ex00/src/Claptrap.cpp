@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 06:56:29 by enchevri          #+#    #+#             */
-/*   Updated: 2026/01/02 07:06:54 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2026/01/02 07:22:47 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,13 @@ _name(name) , _hitPoints(10), _energyPoints(10), _attackPoints(0)
 Claptrap::~Claptrap()
 {
 	std::cout << "Bye bye " << this->_name << endl;
+}
+
+Claptrap &Claptrap::operator=(Claptrap const &other)
+{
+	this->_name = other._name;
+	this->_hitPoints = other._hitPoints;
+	this->_energyPoints = other._energyPoints;
+	this->_attackPoints = other._attackPoints;
+	return *this;
 }
