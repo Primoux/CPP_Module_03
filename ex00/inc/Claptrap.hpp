@@ -8,9 +8,9 @@ class Claptrap
 {
   private:
 	string _name;
-	int _hitPoints;
-	int _energyPoints;
-	int _attackPoints;
+	unsigned int _hitPoints;
+	unsigned int _energyPoints;
+	unsigned int _attackPoints;
 
   public:
 	// CONSTRUCTOR
@@ -20,6 +20,23 @@ class Claptrap
 
 	// OPERATOR
 	Claptrap &operator=(Claptrap const &other);
+
+	// MEMBER FUNCTION
+	void attack(const string &target);
+	void takeDamage(unsigned int amount);
+	void beRepaired(unsigned int amount);
+
+	// GETTER
+	const string &getName(void) const;
+	int getHitPoints(void) const;
+	int getEnergyPoints(void) const;
+	int getAttackPoints(void) const;
+
+	// SETTER
+	void setEnergyPoints(unsigned int points);
+	void setAttackPoints(unsigned int points);
+	void setHitPoints(unsigned int points);
+
 };
 std::ostream &operator<<(std::ostream &o, const Claptrap &obj);
 
