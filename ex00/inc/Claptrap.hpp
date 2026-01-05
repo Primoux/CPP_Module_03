@@ -12,6 +12,7 @@ class ClapTrap
 	unsigned int _energyPoints;
 	unsigned int _attackPoints;
 
+
   public:
 	// CONSTRUCTOR
 	ClapTrap();
