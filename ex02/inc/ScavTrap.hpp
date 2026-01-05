@@ -1,14 +1,14 @@
 #ifndef SCAVTRAP_HPP
-#define SCAVTRAP_HPP
+# define SCAVTRAP_HPP
 
-#include "ClapTrap.hpp"
-#include <ostream>
+# include "ClapTrap.hpp"
+# include <ostream>
 
 class ScavTrap : public ClapTrap
 {
   private:
-	
 
+  
   public:
 	// CONSTRUCTOR
 	ScavTrap();

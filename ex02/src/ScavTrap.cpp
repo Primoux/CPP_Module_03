@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 06:56:29 by enchevri          #+#    #+#             */
-/*   Updated: 2026/01/05 14:05:59 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2026/01/05 14:20:09 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ ScavTrap::ScavTrap(const string &name)
 {
 	string lastName = this->_name;
 	this->setName(name);
-	std::cout << SCAVTRAP << name << RESET << " created from->" << CLAPCOLOR << lastName << RESET << endl;
+	std::cout << SCAVTRAP << name << BGREEN " created " RESET "from->" << CLAPCOLOR << lastName << RESET << endl;
 	this->setAttackPoints(20);
 	this->setEnergyPoints(50);
 	this->setHitPoints(100);

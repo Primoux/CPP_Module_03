@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 06:56:29 by enchevri          #+#    #+#             */
-/*   Updated: 2026/01/05 14:09:38 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2026/01/05 14:19:44 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ FragTrap::FragTrap(const string &name)
 {
 	string lastName = this->_name;
 	this->setName(name);
-	std::cout << FRAGTRAP << name << RESET << " created from->" << CLAPCOLOR << lastName << RESET << endl;
+	std::cout << FRAGTRAP << name << BGREEN " created " RESET "from->" << CLAPCOLOR << lastName << RESET << endl;
 	this->setAttackPoints(30);
 	this->setEnergyPoints(100);
 	this->setHitPoints(100);
@@ -31,7 +31,7 @@ FragTrap::FragTrap(const string &name)
 
 FragTrap::~FragTrap(void)
 {
-	std::cout << FRAGTRAP << this->_name << RESET << RED << " destroyed" << RESET << endl;
+	std::cout << FRAGTRAP << this->_name << RED << " destroyed" << RESET << endl;
 }
 
 FragTrap &FragTrap::operator=(ClapTrap const &other)

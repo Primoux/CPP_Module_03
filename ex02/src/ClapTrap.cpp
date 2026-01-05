@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 06:56:29 by enchevri          #+#    #+#             */
-/*   Updated: 2026/01/05 14:05:54 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2026/01/05 14:56:51 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,25 @@
 using std::endl;
 using std::string;
 
+
 ClapTrap::ClapTrap() : 
 _name("DefaultClapTrap"), _hitPoints(10), _energyPoints(10), _attackPoints(0) 
 {	
-	std::cout << CLAPTRAP "DefaultClapTrap" RESET " created" << endl;
+	std::cout << CLAPTRAP "DefaultClapTrap" BGREEN " created" RESET << endl;
 }
 
-ClapTrap::ClapTrap(string name) : 
+ClapTrap::ClapTrap(const string &name) : 
 _name(name), _hitPoints(10), _energyPoints(10), _attackPoints(0)
 {
-	std::cout << CLAPTRAP << name << RESET " created" << endl;
+	std::cout << CLAPTRAP << name << BGREEN " created" RESET << endl;
 }
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << CLAPTRAP << this->_name << RESET << RED << " destroyed" << RESET << endl;
+	std::cout << CLAPTRAP << this->_name <<  RED " destroyed" RESET << endl;
 }
 
-ClapTrap &ClapTrap::operator=(ClapTrap const &other)
+ClapTrap &ClapTrap::operator=(const ClapTrap &other)
 {
 	this->_name = other._name;
 	this->_hitPoints = other._hitPoints;
@@ -137,6 +138,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 {
 	unsigned int currentEnergyPoints = getEnergyPoints();
 	unsigned int currentHealth = this->getHitPoints();
+	
 	if (currentEnergyPoints == 0)
 	{
 		std::cout << *this << " can't repair himself no energy points left" << endl;

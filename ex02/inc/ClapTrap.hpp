@@ -16,12 +16,12 @@ class ClapTrap
   public:
 	// CONSTRUCTOR
 	ClapTrap();
-	ClapTrap(string name);
-	ClapTrap(ClapTrap const &original);
+	ClapTrap(const string &name);
+	ClapTrap(const ClapTrap &original);
 	~ClapTrap();
 
 	// OPERATOR
-	ClapTrap &operator=(ClapTrap const &other);
+	ClapTrap &operator=(const ClapTrap &other);
 
 	// MEMBER FUNCTION
 	void attack(const string &target);
@@ -39,8 +39,6 @@ class ClapTrap
 	void setAttackPoints(unsigned int points);
 	void setHitPoints(unsigned int points);
 	void setName(const string &name);
-
-
 };
 std::ostream &operator<<(std::ostream &o, const ClapTrap &obj);
 

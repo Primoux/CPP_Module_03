@@ -1,14 +1,14 @@
 #ifndef FRAGTRAP_HPP
-#define FRAGTRAP_HPP
+# define FRAGTRAP_HPP
 
-#include "ClapTrap.hpp"
-#include <ostream>
+# include "ClapTrap.hpp"
+# include <ostream>
 
 class FragTrap : public ClapTrap
 {
   private:
 
-
+  
   public:
 	// CONSTRUCTOR
 	FragTrap();
