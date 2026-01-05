@@ -6,13 +6,13 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 06:56:29 by enchevri          #+#    #+#             */
-/*   Updated: 2026/01/05 14:05:45 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2026/01/05 14:09:38 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "FragTrap.hpp"
-#include "ClapTrap.hpp"
 #include "trap.h"
+#include "ClapTrap.hpp"
+#include "FragTrap.hpp"
 #include <iostream>
 #include <ostream>
 
