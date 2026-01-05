@@ -7,10 +7,10 @@ using std::string;
 class ClapTrap
 {
   protected:
-	string _name;
-	unsigned int _hitPoints;
-	unsigned int _energyPoints;
-	unsigned int _attackPoints;
+	string 			_name;
+	unsigned int 	_hitPoints;
+	unsigned int 	_energyPoints;
+	unsigned int 	_attackPoints;
 
 
   public:
@@ -24,21 +24,21 @@ class ClapTrap
 	ClapTrap &operator=(const ClapTrap &other);
 
 	// MEMBER FUNCTION
-	void attack(const string &target);
-	void takeDamage(unsigned int amount);
-	void beRepaired(unsigned int amount);
+	void 			attack(const string &target);
+	void 			takeDamage(unsigned int amount);
+	void 			beRepaired(unsigned int amount);
 
 	// GETTER
-	const string &getName(void) const;
-	unsigned int getHitPoints(void) const;
-	unsigned int getEnergyPoints(void) const;
-	unsigned int getAttackPoints(void) const;
+	const string 	&getName(void) const;
+	unsigned int 	getHitPoints(void) const;
+	unsigned int 	getEnergyPoints(void) const;
+	unsigned int 	getAttackPoints(void) const;
 
 	// SETTER
-	void setEnergyPoints(unsigned int points);
-	void setAttackPoints(unsigned int points);
-	void setHitPoints(unsigned int points);
-	void setName(const string &name);
+	void 			setEnergyPoints(unsigned int points);
+	void 			setAttackPoints(unsigned int points);
+	void 			setHitPoints(unsigned int points);
+	void 			setName(const string &name);
 };
 std::ostream &operator<<(std::ostream &o, const ClapTrap &obj);
 
