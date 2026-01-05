@@ -20,7 +20,8 @@ class FragTrap : public ClapTrap
 	FragTrap &operator=(ClapTrap const &other);
 
 	// MEMBER FUNCTION
-	void highFivesGuys(void);
+	void	highFivesGuys(void);
+
 };
 std::ostream &operator<<(std::ostream &o, const FragTrap &obj);
 
