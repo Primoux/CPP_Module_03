@@ -6,32 +6,47 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 06:56:29 by enchevri          #+#    #+#             */
-/*   Updated: 2026/01/02 12:25:16 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2026/01/26 21:51:45 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 #include "ClapTrap.hpp"
-#include "trap.h"
+#include "Color.h"
 #include <iostream>
 #include <ostream>
 
 using std::endl;
 using std::string;
 
+
+ScavTrap::ScavTrap()
+{
+	this->_name = "DefaultScavTrap";
+	std::cout << SCAVTRAP << this->_name << RESET " created" << endl;
+	this->_hitPoints = 100;
+    this->_energyPoints = 50;
+    this->_attackPoints = 20;
+}
+
 ScavTrap::ScavTrap(const string &name)
 {
 	string lastName = this->_name;
-	this->setName(name);
+	this->_name = name;
 	std::cout << SCAVTRAP << name << RESET << " created from->" << CLAPCOLOR << lastName << RESET << endl;
-	this->setAttackPoints(20);
-	this->setEnergyPoints(50);
-	this->setHitPoints(100);
+	this->_hitPoints = 100;
+    this->_energyPoints = 50;
+    this->_attackPoints = 20;
+}
+
+ScavTrap::ScavTrap(ScavTrap const &original) : ClapTrap(original)
+{
+	std::cout << SCAVTRAP << RESET "Created a copy of " << SCAVCOLOR << original << RESET << endl;
 }
 
 ScavTrap::~ScavTrap(void)
 {
-	std::cout << SCAVTRAP << this->_name << RESET << " destroyed" << endl;
+	std::cout << SCAVTRAP << this->_name << RED << " destroyed" RESET << endl;
 }
 
 ScavTrap &ScavTrap::operator=(ClapTrap const &other)

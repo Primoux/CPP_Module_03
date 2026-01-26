@@ -1,26 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Claptrap.cpp                                       :+:      :+:    :+:   */
+/*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 06:56:29 by enchevri          #+#    #+#             */
-/*   Updated: 2026/01/02 11:55:04 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2026/01/26 21:37:41 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
+#include "Color.h"
 #include "iostream"
 #include <ostream>
 
 using std::endl;
 using std::string;
 
+ClapTrap::ClapTrap(): 
+_name("DefaultClapTrap"), _hitPoints(10), _energyPoints(10), _attackPoints(0)
+{
+	std::cout << this->_name << " created" << endl;
+
+}
+
 ClapTrap::ClapTrap(string name) : 
 _name(name), _hitPoints(10), _energyPoints(10), _attackPoints(0)
 {
 	std::cout << name << " created" << endl;
+}
+
+ClapTrap::ClapTrap(ClapTrap const &original) :
+_name(original._name), _hitPoints(original._hitPoints), _energyPoints(original._energyPoints), _attackPoints(original._attackPoints)
+{
+	std::cout << "Created a copy of " << original << endl;
 }
 
 ClapTrap::~ClapTrap()

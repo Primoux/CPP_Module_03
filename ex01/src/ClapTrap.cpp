@@ -6,13 +6,13 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 06:56:29 by enchevri          #+#    #+#             */
-/*   Updated: 2026/01/02 12:27:21 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2026/01/26 21:51:43 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 #include "iostream"
-#include "trap.h"
+#include "Color.h"
 #include <ostream>
 
 using std::endl;
@@ -30,9 +30,15 @@ _name(name), _hitPoints(10), _energyPoints(10), _attackPoints(0)
 	std::cout << CLAPTRAP << name << RESET " created" << endl;
 }
 
+ClapTrap::ClapTrap(ClapTrap const &original) :
+_name(original._name), _hitPoints(original._hitPoints), _energyPoints(original._energyPoints),_attackPoints(original._attackPoints)
+{
+	std::cout << CLAPTRAP << RESET "Created a copy of " << CLAPCOLOR << original << RESET << endl;
+}
+
 ClapTrap::~ClapTrap()
 {
-	std::cout << CLAPTRAP << this->_name << RESET " destroyed" << endl;
+	std::cout << CLAPTRAP << this->_name << RED " destroyed" RESET << endl;
 }
 
 ClapTrap &ClapTrap::operator=(ClapTrap const &other)

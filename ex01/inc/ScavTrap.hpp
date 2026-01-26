@@ -13,8 +13,8 @@ class ScavTrap : public ClapTrap
 	// CONSTRUCTOR
 	ScavTrap();
 	ScavTrap(const string &name);
-	~ScavTrap();
 	ScavTrap(ScavTrap const &original);
+	~ScavTrap();
 
 	// OPERATOR
 	ScavTrap &operator=(ClapTrap const &other);
