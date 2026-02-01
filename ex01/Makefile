@@ -37,15 +37,4 @@ clean:
 	rm -rf $(OBJ_DIR)
 
 fclean: clean
-	rm -rf $(NAME) compile_commands.json .cache
-
-compile_commands.json: fclean
-	@if command -v bear >/dev/null 2>&1; then \
-		bear -- $(MAKE) --no-print-directory; \
-	else \
-		echo '[' > $@; \
-		$(foreach src,$(SRCS), echo '  {"directory": "'$$(pwd)'", "command": "$(CC) $(CFLAGS) $(INCLUDES) -c $(src)", "file": "$(src)"},' >> $@;) \
-		sed -i '$$ s/,$$//' $@; \
-		echo ']' >> $@; \
-		$(MAKE) --no-print-directory; \
-	fi
+	rm -rf $(NAME) .cache
