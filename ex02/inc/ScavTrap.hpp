@@ -13,14 +13,14 @@ class ScavTrap : public ClapTrap
 	// CONSTRUCTOR
 	ScavTrap();
 	ScavTrap(const string &name);
-	~ScavTrap();
 	ScavTrap(ScavTrap const &original);
+	~ScavTrap();
 
 	// OPERATOR
-	ScavTrap &operator=(ClapTrap const &other);
+	ScavTrap &operator=(ScavTrap const &other);
 
 	// MEMBER FUNCTION
-	void guardGate(void);
+	void	guardGate(void);
 };
 std::ostream &operator<<(std::ostream &o, const ScavTrap &obj);
 

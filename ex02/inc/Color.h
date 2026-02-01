@@ -27,8 +27,8 @@
 # define SCAVCOLOR BBLUE
 # define CLAPCOLOR BMAGENTA
 # define FRAGCOLOR BYELLOW
-# define FRAGTRAP FRAGCOLOR "<FragTrap> "
 # define SCAVTRAP SCAVCOLOR "<ScavTrap> "
+# define FRAGTRAP FRAGCOLOR "<FragTrap> "
 # define CLAPTRAP CLAPCOLOR "<ClapTrap> "
 
 #endif // !TRAP_H

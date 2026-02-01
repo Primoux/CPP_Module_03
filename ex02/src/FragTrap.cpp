@@ -6,11 +6,11 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 06:56:29 by enchevri          #+#    #+#             */
-/*   Updated: 2026/01/05 14:19:44 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2026/02/01 14:24:22 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "trap.h"
+#include "Color.h"
 #include "ClapTrap.hpp"
 #include "FragTrap.hpp"
 #include <iostream>
@@ -19,22 +19,34 @@
 using std::endl;
 using std::string;
 
-FragTrap::FragTrap(const string &name)
+FragTrap::FragTrap() : ClapTrap()
 {
-	string lastName = this->_name;
-	this->setName(name);
-	std::cout << FRAGTRAP << name << BGREEN " created " RESET "from->" << CLAPCOLOR << lastName << RESET << endl;
-	this->setAttackPoints(30);
-	this->setEnergyPoints(100);
-	this->setHitPoints(100);
+	this->_name = "DefaultFragTrap";
+	this->_hitPoints = 100;
+	this->_energyPoints = 100;
+	this->_attackPoints = 30;
+	std::cout << FRAGTRAP << this->_name << BGREEN <<  " created" RESET<< endl;
+}
+
+FragTrap::FragTrap(const string &name) : ClapTrap(name)
+{
+	this->_hitPoints = 100;
+	this->_energyPoints = 100;
+	this->_attackPoints = 30;
+	std::cout << FRAGTRAP << name << BGREEN << " created" RESET << endl;
+}
+
+FragTrap::FragTrap(FragTrap const &original) : ClapTrap(original)
+{
+	std::cout << FRAGTRAP << BGREEN "Created " RESET "a copy of " << FRAGCOLOR << original << RESET << endl;
 }
 
 FragTrap::~FragTrap(void)
 {
-	std::cout << FRAGTRAP << this->_name << RED << " destroyed" << RESET << endl;
+	std::cout << FRAGTRAP << this->_name << BRED << " destroyed" << RESET << endl;
 }
 
-FragTrap &FragTrap::operator=(ClapTrap const &other)
+FragTrap &FragTrap::operator=(FragTrap const &other)
 {
 	this->_name = other.getName();
 	this->_hitPoints = other.getHitPoints();
@@ -45,7 +57,7 @@ FragTrap &FragTrap::operator=(ClapTrap const &other)
 
 std::ostream &operator<<(std::ostream &o, const FragTrap &obj)
 {
-	return (o << FRAGTRAP << obj.getName() << RESET);
+	return (o << obj.getName() << RESET);
 }
 
 void FragTrap::highFivesGuys(void)

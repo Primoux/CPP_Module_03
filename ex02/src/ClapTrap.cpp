@@ -6,37 +6,42 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 06:56:29 by enchevri          #+#    #+#             */
-/*   Updated: 2026/01/05 14:56:51 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2026/02/01 14:10:53 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
-#include "iostream"
-#include "trap.h"
+#include "Color.h"
+#include <iostream>
 #include <ostream>
 
 using std::endl;
 using std::string;
 
-
-ClapTrap::ClapTrap() : 
-_name("DefaultClapTrap"), _hitPoints(10), _energyPoints(10), _attackPoints(0) 
-{	
-	std::cout << CLAPTRAP "DefaultClapTrap" BGREEN " created" RESET << endl;
+ClapTrap::ClapTrap(): 
+_name("DefaultClapTrap"), _hitPoints(10), _energyPoints(10), _attackPoints(0)
+{
+	std::cout << CLAPTRAP << this->_name << BGREEN " created" RESET << endl;
 }
 
 ClapTrap::ClapTrap(const string &name) : 
 _name(name), _hitPoints(10), _energyPoints(10), _attackPoints(0)
 {
-	std::cout << CLAPTRAP << name << BGREEN " created" RESET << endl;
+	std::cout << CLAPTRAP << this->_name << BGREEN " created" RESET << endl;
+}
+
+ClapTrap::ClapTrap(ClapTrap const &original) :
+_name(original._name), _hitPoints(original._hitPoints), _energyPoints(original._energyPoints), _attackPoints(original._attackPoints)
+{
+	std::cout << CLAPTRAP << BGREEN "Created" RESET " a copy of " CLAPCOLOR << original << RESET << endl;
 }
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << CLAPTRAP << this->_name <<  RED " destroyed" RESET << endl;
+	std::cout << CLAPTRAP << this->_name << BRED " destroyed" RESET << endl;
 }
 
-ClapTrap &ClapTrap::operator=(const ClapTrap &other)
+ClapTrap &ClapTrap::operator=(ClapTrap const &other)
 {
 	this->_name = other._name;
 	this->_hitPoints = other._hitPoints;
@@ -117,11 +122,11 @@ void ClapTrap::takeDamage(unsigned int amount)
 
 	if (currentHealth == 0)
 	{
-		std::cout << "Chill bro, " << *this << " is dead" << endl;
+		std::cout	<< "Chill bro, " << *this << " is dead" << std::endl;
 		return;
 	}
 
-	std::cout << *this << " took " << amount << " damage" << endl;
+	std::cout	<< *this << " took " << amount << " damage" << endl;
 
 	unsigned int newHealth;
 	if (amount >= currentHealth)
@@ -138,19 +143,18 @@ void ClapTrap::beRepaired(unsigned int amount)
 {
 	unsigned int currentEnergyPoints = getEnergyPoints();
 	unsigned int currentHealth = this->getHitPoints();
-	
 	if (currentEnergyPoints == 0)
 	{
-		std::cout << *this << " can't repair himself no energy points left" << endl;
+		std::cout	<< *this << " can't repair himself no energy points left" << endl;
 		return;
 	}
 	else if (currentHealth == 0)
 	{
-		std::cout << *this << " can't repair himself because he's dead" << endl;
+		std::cout	<< *this << " can't repair himself because he's dead" << endl;
 		return;
 	}
 
-	std::cout << *this << " healed " << amount << " hit points" << endl;
+	std::cout	<< *this << " healed " << amount << " hit points" << endl;
 	
 	unsigned int newHealth = currentHealth + amount;
 	unsigned int newEnergyPoints = currentEnergyPoints - 1;

@@ -13,11 +13,11 @@ class FragTrap : public ClapTrap
 	// CONSTRUCTOR
 	FragTrap();
 	FragTrap(const string &name);
-	~FragTrap();
 	FragTrap(FragTrap const &original);
+	~FragTrap();
 
 	// OPERATOR
-	FragTrap &operator=(ClapTrap const &other);
+	FragTrap &operator=(FragTrap const &other);
 
 	// MEMBER FUNCTION
 	void	highFivesGuys(void);

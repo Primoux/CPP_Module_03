@@ -6,35 +6,48 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 06:56:29 by enchevri          #+#    #+#             */
-/*   Updated: 2026/01/05 14:20:09 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2026/02/01 14:24:01 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 #include "ClapTrap.hpp"
-#include "trap.h"
+#include "Color.h"
 #include <iostream>
 #include <ostream>
 
 using std::endl;
 using std::string;
 
-ScavTrap::ScavTrap(const string &name)
+
+ScavTrap::ScavTrap() : ClapTrap()
 {
-	string lastName = this->_name;
-	this->setName(name);
-	std::cout << SCAVTRAP << name << BGREEN " created " RESET "from->" << CLAPCOLOR << lastName << RESET << endl;
-	this->setAttackPoints(20);
-	this->setEnergyPoints(50);
-	this->setHitPoints(100);
+	this->_name = "DefaultScavTrap";
+	this->_hitPoints = 100;
+	this->_energyPoints = 50;
+	this->_attackPoints = 20;
+	std::cout << SCAVTRAP << this->_name << BGREEN <<  " created" RESET<< endl;
+}
+
+ScavTrap::ScavTrap(const string &name) : ClapTrap(name)
+{
+	this->_hitPoints = 100;
+	this->_energyPoints = 50;
+	this->_attackPoints = 20;
+	std::cout << SCAVTRAP << name << BGREEN << " created" RESET << endl;
+}
+
+ScavTrap::ScavTrap(ScavTrap const &original) : ClapTrap(original)
+{
+	std::cout << SCAVTRAP << BGREEN "Created " RESET "a copy of " << SCAVCOLOR << original << RESET << endl;
 }
 
 ScavTrap::~ScavTrap(void)
 {
-	std::cout << SCAVTRAP << this->_name << RESET << RED << " destroyed" << RESET << endl;
+	std::cout << SCAVTRAP << this->_name << BRED << " destroyed" RESET << endl;
 }
 
-ScavTrap &ScavTrap::operator=(ClapTrap const &other)
+ScavTrap &ScavTrap::operator=(ScavTrap const &other)
 {
 	this->_name = other.getName();
 	this->_hitPoints = other.getHitPoints();
