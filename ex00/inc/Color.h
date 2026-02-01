@@ -25,7 +25,7 @@
 # define BWHITE "\033[1;37m"
 
 # define SCAVCOLOR BBLUE
-# define CLAPCOLOR BGREEN
+# define CLAPCOLOR BMAGENTA
 # define SCAVTRAP SCAVCOLOR "<ScavTrap> "
 # define CLAPTRAP CLAPCOLOR "<ClapTrap> "
 
