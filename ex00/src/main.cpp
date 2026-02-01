@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 16:33:57 by enchevri          #+#    #+#             */
-/*   Updated: 2026/02/01 13:43:10 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2026/02/01 13:54:07 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,8 @@ int	main(void)
 	
 	std::cout << BMAGENTA "Attempting 12 attacks (max is 10)..." RESET << endl;
 	for (int i = 1; i < 13; i++)
-	{
-		std::cout << i << " ";
-		tired.attack("TargetDummy");
+	{ 
+		std::cout << i << " "; tired.attack("TargetDummy"); 
 	}
 	
 	std::cout << BMAGENTA "\nTrying to repair with no energy..." RESET << endl;
