@@ -38,6 +38,7 @@ class ClapTrap
 	void setEnergyPoints(unsigned int points);
 	void setAttackPoints(unsigned int points);
 	void setHitPoints(unsigned int points);
+	void setName(const string &name);
 
 };
 std::ostream &operator<<(std::ostream &o, const ClapTrap &obj);

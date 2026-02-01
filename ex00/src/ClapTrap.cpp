@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 06:56:29 by enchevri          #+#    #+#             */
-/*   Updated: 2026/02/01 13:45:06 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2026/02/01 14:26:52 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,11 @@ void ClapTrap::setAttackPoints(unsigned int points)
 void ClapTrap::setHitPoints(unsigned int points)
 {
 	this->_hitPoints = points;
+}
+
+void ClapTrap::setName(const string &name)
+{
+	this->_name = name;
 }
 
 void ClapTrap::attack(const string &target)
