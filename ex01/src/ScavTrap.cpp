@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 06:56:29 by enchevri          #+#    #+#             */
-/*   Updated: 2026/02/01 14:25:21 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2026/02/01 14:26:55 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +20,21 @@ using std::endl;
 using std::string;
 
 
-ScavTrap::ScavTrap()
+ScavTrap::ScavTrap() : ClapTrap()
 {
 	this->_name = "DefaultScavTrap";
-	std::cout << SCAVTRAP << this->_name << BGREEN <<  " created" RESET<< endl;
 	this->_hitPoints = 100;
-    this->_energyPoints = 50;
-    this->_attackPoints = 20;
+	this->_energyPoints = 50;
+	this->_attackPoints = 20;
+	std::cout << SCAVTRAP << this->_name << BGREEN <<  " created" RESET<< endl;
 }
 
 ScavTrap::ScavTrap(const string &name) : ClapTrap(name)
 {
-	string lastName = this->_name;
-	this->_name = name;
-	std::cout << SCAVTRAP << name << RESET << " created from " << CLAPCOLOR << lastName << RESET << endl;
 	this->_hitPoints = 100;
-    this->_energyPoints = 50;
-    this->_attackPoints = 20;
+	this->_energyPoints = 50;
+	this->_attackPoints = 20;
+	std::cout << SCAVTRAP << name << BGREEN << " created" RESET << endl;
 }
 
 ScavTrap::ScavTrap(ScavTrap const &original) : ClapTrap(original)
