@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 06:56:29 by enchevri          #+#    #+#             */
-/*   Updated: 2026/02/01 14:26:55 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2026/02/01 14:24:01 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ ScavTrap::ScavTrap(const string &name) : ClapTrap(name)
 
 ScavTrap::ScavTrap(ScavTrap const &original) : ClapTrap(original)
 {
-	std::cout << SCAVTRAP << RESET "Created a copy of " << SCAVCOLOR << original << RESET << endl;
+	std::cout << SCAVTRAP << BGREEN "Created " RESET "a copy of " << SCAVCOLOR << original << RESET << endl;
 }
 
 ScavTrap::~ScavTrap(void)

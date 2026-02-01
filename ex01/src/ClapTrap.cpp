@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 06:56:29 by enchevri          #+#    #+#             */
-/*   Updated: 2026/02/01 13:49:22 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2026/02/01 14:10:53 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,19 @@ using std::string;
 ClapTrap::ClapTrap(): 
 _name("DefaultClapTrap"), _hitPoints(10), _energyPoints(10), _attackPoints(0)
 {
-	std::cout << CLAPTRAP << this->_name << " created" RESET << endl;
+	std::cout << CLAPTRAP << this->_name << BGREEN " created" RESET << endl;
 }
 
 ClapTrap::ClapTrap(const string &name) : 
 _name(name), _hitPoints(10), _energyPoints(10), _attackPoints(0)
 {
-	std::cout << CLAPTRAP << this->_name << " created" RESET << endl;
+	std::cout << CLAPTRAP << this->_name << BGREEN " created" RESET << endl;
 }
 
 ClapTrap::ClapTrap(ClapTrap const &original) :
 _name(original._name), _hitPoints(original._hitPoints), _energyPoints(original._energyPoints), _attackPoints(original._attackPoints)
 {
-	std::cout << CLAPTRAP << "Created a copy of " << original << RESET << endl;
+	std::cout << CLAPTRAP << BGREEN "Created" RESET " a copy of " CLAPCOLOR << original << RESET << endl;
 }
 
 ClapTrap::~ClapTrap()
