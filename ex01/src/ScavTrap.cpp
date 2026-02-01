@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 06:56:29 by enchevri          #+#    #+#             */
-/*   Updated: 2026/02/01 13:50:14 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2026/02/01 14:25:21 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ using std::string;
 ScavTrap::ScavTrap()
 {
 	this->_name = "DefaultScavTrap";
-	std::cout << SCAVTRAP << this->_name <<  " created" RESET<< endl;
+	std::cout << SCAVTRAP << this->_name << BGREEN <<  " created" RESET<< endl;
 	this->_hitPoints = 100;
     this->_energyPoints = 50;
     this->_attackPoints = 20;
 }
 
-ScavTrap::ScavTrap(const string &name)
+ScavTrap::ScavTrap(const string &name) : ClapTrap(name)
 {
 	string lastName = this->_name;
 	this->_name = name;
