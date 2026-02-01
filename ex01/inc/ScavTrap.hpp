@@ -17,7 +17,7 @@ class ScavTrap : public ClapTrap
 	~ScavTrap();
 
 	// OPERATOR
-	ScavTrap &operator=(ClapTrap const &other);
+	ScavTrap &operator=(ScavTrap const &other);
 
 	// MEMBER FUNCTION
 	void guardGate(void);

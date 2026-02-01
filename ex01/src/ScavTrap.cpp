@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 06:56:29 by enchevri          #+#    #+#             */
-/*   Updated: 2026/01/26 21:51:45 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2026/02/01 13:50:14 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ using std::string;
 ScavTrap::ScavTrap()
 {
 	this->_name = "DefaultScavTrap";
-	std::cout << SCAVTRAP << this->_name << RESET " created" << endl;
+	std::cout << SCAVTRAP << this->_name <<  " created" RESET<< endl;
 	this->_hitPoints = 100;
     this->_energyPoints = 50;
     this->_attackPoints = 20;
@@ -33,7 +33,7 @@ ScavTrap::ScavTrap(const string &name)
 {
 	string lastName = this->_name;
 	this->_name = name;
-	std::cout << SCAVTRAP << name << RESET << " created from->" << CLAPCOLOR << lastName << RESET << endl;
+	std::cout << SCAVTRAP << name << RESET << " created from " << CLAPCOLOR << lastName << RESET << endl;
 	this->_hitPoints = 100;
     this->_energyPoints = 50;
     this->_attackPoints = 20;
@@ -46,10 +46,10 @@ ScavTrap::ScavTrap(ScavTrap const &original) : ClapTrap(original)
 
 ScavTrap::~ScavTrap(void)
 {
-	std::cout << SCAVTRAP << this->_name << RED << " destroyed" RESET << endl;
+	std::cout << SCAVTRAP << this->_name << BRED << " destroyed" RESET << endl;
 }
 
-ScavTrap &ScavTrap::operator=(ClapTrap const &other)
+ScavTrap &ScavTrap::operator=(ScavTrap const &other)
 {
 	this->_name = other.getName();
 	this->_hitPoints = other.getHitPoints();
