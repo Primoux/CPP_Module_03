@@ -6,13 +6,13 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 06:56:29 by enchevri          #+#    #+#             */
-/*   Updated: 2026/01/26 21:37:41 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2026/02/01 13:45:06 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 #include "Color.h"
-#include "iostream"
+#include <iostream>
 #include <ostream>
 
 using std::endl;
@@ -21,25 +21,24 @@ using std::string;
 ClapTrap::ClapTrap(): 
 _name("DefaultClapTrap"), _hitPoints(10), _energyPoints(10), _attackPoints(0)
 {
-	std::cout << this->_name << " created" << endl;
-
+	std::cout << CLAPTRAP << this->_name << " created" RESET << endl;
 }
 
-ClapTrap::ClapTrap(string name) : 
+ClapTrap::ClapTrap(const string &name) : 
 _name(name), _hitPoints(10), _energyPoints(10), _attackPoints(0)
 {
-	std::cout << name << " created" << endl;
+	std::cout << CLAPTRAP << this->_name << " created" RESET << endl;
 }
 
 ClapTrap::ClapTrap(ClapTrap const &original) :
 _name(original._name), _hitPoints(original._hitPoints), _energyPoints(original._energyPoints), _attackPoints(original._attackPoints)
 {
-	std::cout << "Created a copy of " << original << endl;
+	std::cout << CLAPTRAP << "Created a copy of " << original << RESET << endl;
 }
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << this->_name << " destroyed" << endl;
+	std::cout << CLAPTRAP << this->_name << BRED " destroyed" RESET << endl;
 }
 
 ClapTrap &ClapTrap::operator=(ClapTrap const &other)
@@ -95,7 +94,7 @@ void ClapTrap::attack(const string &target)
 {
 	if (this->_energyPoints == 0)
 	{
-		std::cout	<< *this << " can't attacked "
+		std::cout	<< *this << " can't attack "
 					<< target << " no energy points left" << endl;
 		return;
 	}
@@ -106,7 +105,7 @@ void ClapTrap::attack(const string &target)
 		return;
 	}
 	std::cout	<< *this << " attacked "
-				<< target << " and dealed "
+				<< target << " and dealt "
 				<< this->getAttackPoints() << endl;
 	
 	this->setEnergyPoints(this->getEnergyPoints() - 1);

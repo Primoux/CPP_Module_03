@@ -16,7 +16,7 @@ class ClapTrap
   public:
 	// CONSTRUCTOR
 	ClapTrap();
-	ClapTrap(string name);
+	ClapTrap(const string &name);
 	ClapTrap(ClapTrap const &original);
 	~ClapTrap();
 
