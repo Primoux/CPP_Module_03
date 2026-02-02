@@ -20,6 +20,7 @@ class ScavTrap : public ClapTrap
 	ScavTrap &operator=(ScavTrap const &other);
 
 	// MEMBER FUNCTION
+	void attack(const string &target);
 	void guardGate(void);
 };
 std::ostream &operator<<(std::ostream &o, const ScavTrap &obj);

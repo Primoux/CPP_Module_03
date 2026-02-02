@@ -20,6 +20,7 @@ class FragTrap : public ClapTrap
 	FragTrap &operator=(FragTrap const &other);
 
 	// MEMBER FUNCTION
+	void	attack(const string &target);
 	void	highFivesGuys(void);
 
 };

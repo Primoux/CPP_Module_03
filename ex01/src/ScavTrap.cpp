@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 06:56:29 by enchevri          #+#    #+#             */
-/*   Updated: 2026/02/02 12:57:07 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2026/02/02 15:58:58 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,40 @@ ScavTrap::~ScavTrap(void)
 
 ScavTrap &ScavTrap::operator=(ScavTrap const &other)
 {
-	this->_name = other.getName();
-	this->_hitPoints = other.getHitPoints();
-	this->_energyPoints = other.getEnergyPoints();
-	this->_attackPoints = other.getAttackPoints();
+	if (this != &other)
+	{
+		this->_name = other._name;
+		this->_hitPoints = other._hitPoints;
+		this->_energyPoints = other._energyPoints;
+		this->_attackPoints = other._attackPoints;
+	}
 	return (*this);
 }
 
 std::ostream &operator<<(std::ostream &o, const ScavTrap &obj)
 {
 	return (o << obj.getName());
+}
+
+void ScavTrap::attack(const string &target)
+{
+	if (this->_energyPoints == 0)
+	{
+		std::cout	<< SCAVTRAP << *this << " can't attack "
+					<< target << " no energy points left" RESET << endl;
+		return;
+	}
+	else if (this->_hitPoints == 0)
+	{
+		std::cout	<< SCAVTRAP << *this << " can't attack "
+					<< target << " because he's dead" RESET << endl;
+		return;
+	}
+	std::cout	<< SCAVTRAP << *this << " attacked "
+				<< target << " and dealt "
+				<< this->getAttackPoints() << RESET<< endl;
+	
+	this->setEnergyPoints(this->getEnergyPoints() - 1);
 }
 
 void ScavTrap::guardGate(void)
