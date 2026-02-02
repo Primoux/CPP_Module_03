@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 06:56:29 by enchevri          #+#    #+#             */
-/*   Updated: 2026/02/01 14:24:22 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2026/02/02 12:57:17 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 using std::endl;
 using std::string;
 
-FragTrap::FragTrap() : ClapTrap()
+FragTrap::FragTrap()
 {
 	this->_name = "DefaultFragTrap";
 	this->_hitPoints = 100;
