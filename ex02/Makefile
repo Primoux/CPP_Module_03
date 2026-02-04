@@ -5,7 +5,7 @@ NAME			= Borderlands_02
 MAKEFLAGS		+= -j $$(nproc)
 
 CC				= c++
-CFLAGS			= -std=c++98 -Wall -Wextra -Werror
+CFLAGS			= -std=c++98 -Wall -Wextra
 DEPS			= -MMD -MP
 
 OBJ_DIR			= .build/

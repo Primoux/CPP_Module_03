@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 06:56:29 by enchevri          #+#    #+#             */
-/*   Updated: 2026/02/02 15:52:35 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2026/02/04 13:35:16 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,13 @@ ClapTrap::~ClapTrap()
 
 ClapTrap &ClapTrap::operator=(ClapTrap const &other)
 {
-	this->_name = other._name;
-	this->_hitPoints = other._hitPoints;
-	this->_energyPoints = other._energyPoints;
-	this->_attackPoints = other._attackPoints;
+	if (this != &other)
+	{
+		this->_name = other._name;
+		this->_hitPoints = other._hitPoints;
+		this->_energyPoints = other._energyPoints;
+		this->_attackPoints = other._attackPoints;
+	}
 	return (*this);
 }
 
@@ -111,53 +114,42 @@ void ClapTrap::attack(const string &target)
 	}
 	std::cout	<< CLAPTRAP << *this << " attacked "
 				<< target << " and dealt "
-				<< this->getAttackPoints() << endl;
+				<< this->_attackPoints << endl;
 	
-	this->setEnergyPoints(this->getEnergyPoints() - 1);
+	--this->_energyPoints;
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-	unsigned int currentHealth = this->getHitPoints();
-
-	if (currentHealth == 0)
+	if (_hitPoints == 0)
 	{
-		std::cout	<< "Chill bro, " << *this << " is dead" << std::endl;
-		return;
+		std::cout << "Chill bro, " << *this << " is dead" << std::endl;
+		return ;
 	}
-
-	std::cout	<< *this << " took " << amount << " damage" << endl;
-
-	unsigned int newHealth;
-	if (amount >= currentHealth)
-		newHealth = 0;
+	std::cout << *this << " took " << amount << " damage" << endl;
+	
+	if (amount >= this->_hitPoints)
+		this->_hitPoints = 0;
 	else
-		newHealth = currentHealth - amount;
+		this->_hitPoints = _hitPoints - amount;
 
-	this->setHitPoints(newHealth);
-	if (newHealth == 0)
+	if (this->_hitPoints == 0)
 		std::cout << *this << " died RIP" << endl;
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
-	unsigned int currentEnergyPoints = getEnergyPoints();
-	unsigned int currentHealth = this->getHitPoints();
-	if (currentEnergyPoints == 0)
+	if (this->_energyPoints == 0)
 	{
-		std::cout	<< *this << " can't repair himself no energy points left" << endl;
-		return;
+		std::cout << *this << " can't repair himself no energy points left" << endl;
+		return ;
 	}
-	else if (currentHealth == 0)
+	else if (this->_hitPoints == 0)
 	{
-		std::cout	<< *this << " can't repair himself because he's dead" << endl;
-		return;
+		std::cout << *this << " can't repair himself because he's dead" << endl;
+		return ;
 	}
-
-	std::cout	<< *this << " healed " << amount << " hit points" << endl;
-	
-	unsigned int newHealth = currentHealth + amount;
-	unsigned int newEnergyPoints = currentEnergyPoints - 1;
-	this->setHitPoints(newHealth);
-	this->setEnergyPoints(newEnergyPoints);
+	std::cout << *this << " healed " << amount << " hit points" << endl;
+	this->_hitPoints = _hitPoints + amount;
+	--this->_energyPoints;
 }
