@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 06:56:29 by enchevri          #+#    #+#             */
-/*   Updated: 2026/02/02 15:58:58 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2026/02/04 13:37:24 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,22 +80,20 @@ void ScavTrap::attack(const string &target)
 	}
 	std::cout	<< SCAVTRAP << *this << " attacked "
 				<< target << " and dealt "
-				<< this->getAttackPoints() << RESET<< endl;
+				<< this->_attackPoints << RESET<< endl;
 	
-	this->setEnergyPoints(this->getEnergyPoints() - 1);
+	--this->_energyPoints;
 }
 
 void ScavTrap::guardGate(void)
 {
-	unsigned int currentHealth = this->getHitPoints();
-	unsigned int currentEnergy = this->getEnergyPoints();
-	if (currentEnergy == 0)
+	if (this->_energyPoints == 0)
 	{
 		std::cout	<< *this
 					<< " can't be in gate keeper mode because he got 0 energy" << endl;
 		return;
 	}
-	else if (currentHealth == 0)
+	else if (this->_hitPoints == 0)
 	{
 		std::cout	<< *this
 					<< " can't be in gate keeper mode because he's dead" << endl;
