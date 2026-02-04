@@ -44,4 +44,4 @@ class ClapTrap
 };
 std::ostream &operator<<(std::ostream &o, const ClapTrap &obj);
 
-#endif // !CLAPTRAT_HPP
+#endif // !CLAPTRAp_HPP
