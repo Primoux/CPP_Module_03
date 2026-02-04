@@ -7,7 +7,7 @@
 class ScavTrap : public ClapTrap
 {
   private:
-	
+	bool _guardMod;
 
   public:
 	// CONSTRUCTOR

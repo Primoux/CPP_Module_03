@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 06:56:29 by enchevri          #+#    #+#             */
-/*   Updated: 2026/02/04 13:37:24 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2026/02/04 16:47:10 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ using std::endl;
 using std::string;
 
 
-ScavTrap::ScavTrap()
+ScavTrap::ScavTrap() : _guardMod(false)
 {
 	this->_name = "DefaultScavTrap";
 	this->_hitPoints = 100;
@@ -29,7 +29,7 @@ ScavTrap::ScavTrap()
 	std::cout << SCAVTRAP << this->_name << BGREEN <<  " created" RESET<< endl;
 }
 
-ScavTrap::ScavTrap(const string &name) : ClapTrap(name)
+ScavTrap::ScavTrap(const string &name) : ClapTrap(name) , _guardMod(false)
 {
 	this->_hitPoints = 100;
 	this->_energyPoints = 50;
@@ -37,7 +37,7 @@ ScavTrap::ScavTrap(const string &name) : ClapTrap(name)
 	std::cout << SCAVTRAP << name << BGREEN << " created" RESET << endl;
 }
 
-ScavTrap::ScavTrap(ScavTrap const &original) : ClapTrap(original)
+ScavTrap::ScavTrap(ScavTrap const &original) : ClapTrap(original) , _guardMod(false)
 {
 	std::cout << SCAVTRAP << BGREEN "Created " RESET "a copy of " << SCAVCOLOR << original << RESET << endl;
 }
@@ -55,6 +55,7 @@ ScavTrap &ScavTrap::operator=(ScavTrap const &other)
 		this->_hitPoints = other._hitPoints;
 		this->_energyPoints = other._energyPoints;
 		this->_attackPoints = other._attackPoints;
+		this->_guardMod = other._guardMod;
 	}
 	return (*this);
 }
@@ -68,37 +69,73 @@ void ScavTrap::attack(const string &target)
 {
 	if (this->_energyPoints == 0)
 	{
-		std::cout	<< SCAVTRAP << *this << " can't attack "
+		std::cout	<< SCAVTRAP << *this << RESET " can't attack "
 					<< target << " no energy points left" RESET << endl;
 		return;
 	}
 	else if (this->_hitPoints == 0)
 	{
-		std::cout	<< SCAVTRAP << *this << " can't attack "
+		std::cout	<< SCAVTRAP << *this << RESET " can't attack "
 					<< target << " because he's dead" RESET << endl;
 		return;
 	}
-	std::cout	<< SCAVTRAP << *this << " attacked "
+	std::cout	<< SCAVTRAP << *this << RESET " attacked "
 				<< target << " and dealt "
 				<< this->_attackPoints << RESET<< endl;
 	
 	--this->_energyPoints;
 }
 
+// void ScavTrap::takeDamage(unsigned int amount)
+// {
+// 	if (_hitPoints == 0)
+// 	{
+// 		std::cout << "Chill bro, " << *this << " is dead" << std::endl;
+// 		return ;
+// 	}
+// 	if (this->_guardMod)
+// 	{
+// 		std::cout	<< SCAVTRAP << *this << RESET 
+// 					<< " didn't took " << amount 
+// 					<< " damage cause he's in gate keeper mode" << endl;
+// 		this->guardGate();
+// 		return;
+// 	}
+
+// 	std::cout << SCAVTRAP << *this << RESET << " took " << amount << " damage" << endl;
+	
+// 	if (amount >= this->_hitPoints)
+// 		this->_hitPoints = 0;
+// 	else
+// 		this->_hitPoints = _hitPoints - amount;
+
+// 	if (this->_hitPoints == 0)
+// 		std::cout << SCAVTRAP << *this << RESET << " died " BRED "RIP" RESET << endl;
+// }
+
 void ScavTrap::guardGate(void)
 {
-	if (this->_energyPoints == 0)
+	
+	if (this->_hitPoints == 0)
 	{
-		std::cout	<< *this
-					<< " can't be in gate keeper mode because he got 0 energy" << endl;
-		return;
-	}
-	else if (this->_hitPoints == 0)
-	{
-		std::cout	<< *this
+		std::cout	<< SCAVTRAP << *this << RESET
 					<< " can't be in gate keeper mode because he's dead" << endl;
 		return;
 	}
-	std::cout	<< *this
+	else if (this->_guardMod == true)
+	{
+		this->_guardMod = false;
+		std::cout	<< SCAVTRAP << *this << RESET
+					<< " is now no longer in gate keeper mode" << endl;
+		return;
+	}
+	else if (this->_energyPoints == 0)
+	{
+		std::cout	<< SCAVTRAP << *this << RESET
+					<< " can't be in gate keeper mode because he got 0 energy" << endl;
+		return;
+	}
+	std::cout	<< SCAVTRAP << *this << RESET
 				<< " is now in gate keeper mode" << endl;
+	this->_guardMod = true;
 }

@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 06:56:29 by enchevri          #+#    #+#             */
-/*   Updated: 2026/02/04 13:45:24 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2026/02/04 16:48:17 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 using std::endl;
 using std::string;
 
-FragTrap::FragTrap()
+FragTrap::FragTrap() : _highFiveMod(false)
 {
 	this->_name = "DefaultFragTrap";
 	this->_hitPoints = 100;
@@ -28,7 +28,7 @@ FragTrap::FragTrap()
 	std::cout << FRAGTRAP << this->_name << BGREEN <<  " created" RESET<< endl;
 }
 
-FragTrap::FragTrap(const string &name) : ClapTrap(name)
+FragTrap::FragTrap(const string &name) : ClapTrap(name) , _highFiveMod(false)
 {
 	this->_hitPoints = 100;
 	this->_energyPoints = 100;
@@ -36,7 +36,7 @@ FragTrap::FragTrap(const string &name) : ClapTrap(name)
 	std::cout << FRAGTRAP << name << BGREEN << " created" RESET << endl;
 }
 
-FragTrap::FragTrap(FragTrap const &original) : ClapTrap(original)
+FragTrap::FragTrap(FragTrap const &original) : ClapTrap(original) , _highFiveMod(false)
 {
 	std::cout << FRAGTRAP << BGREEN "Created " RESET "a copy of " << FRAGCOLOR << original << RESET << endl;
 }
@@ -67,37 +67,47 @@ void FragTrap::attack(const string &target)
 {
 	if (this->_energyPoints == 0)
 	{
-		std::cout	<< FRAGTRAP << *this << " can't attack "
-					<< target << " no energy points left" RESET << endl;
+		std::cout	<< FRAGTRAP << *this << RESET " can't attack "
+					<< target << " no energy points left" << endl;
 		return;
 	}
 	else if (this->_hitPoints == 0)
 	{
-		std::cout	<< FRAGTRAP << *this << " can't attack "
-					<< target << " because he's dead" RESET << endl;
+		std::cout	<< FRAGTRAP << *this << RESET " can't attack "
+					<< target << " because he's dead" << endl;
 		return;
 	}
-	std::cout	<< FRAGTRAP << *this << " attacked "
+	std::cout	<< FRAGTRAP << *this << RESET " attacked "
 				<< target << " and dealt "
-				<< this->_attackPoints << RESET<< endl;
+				<< this->_attackPoints << endl;
 	
 	--this->_energyPoints;
 }
 
-void FragTrap::highFivesGuys(void)
+void FragTrap::highFive(void)
 {
+	if (this->_highFiveMod == true)
+	{
+		std::cout	<< FRAGTRAP << *this << RESET
+					<< " is no longer requesting a positive high-five" << endl;
+		this->_highFiveMod = false;
+		return;
+	}
+
 	if (this->_energyPoints == 0)
 	{
-		std::cout	<< *this
+		std::cout	<< FRAGTRAP << *this << RESET
 					<< " can't request a positive high-five because he got 0 energy" << endl;
 		return;
 	}
 	else if (this->_hitPoints == 0)
 	{
-		std::cout	<< *this
+		std::cout	<< FRAGTRAP << *this << RESET
 					<< " can't request a positive high-five because he's dead" << endl;
 		return;
 	}
-	std::cout	<< *this
+	
+	this->_highFiveMod = true;
+	std::cout	<< FRAGTRAP << *this << RESET
 				<< " is now requesting a positive high-five" << endl;
 }

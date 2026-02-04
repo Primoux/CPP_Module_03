@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 06:56:29 by enchevri          #+#    #+#             */
-/*   Updated: 2026/02/04 13:49:58 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2026/02/04 16:18:24 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,17 +102,17 @@ void ClapTrap::attack(const string &target)
 {
 	if (this->_energyPoints == 0)
 	{
-		std::cout	<< CLAPTRAP << *this << " can't attack "
+		std::cout	<< CLAPTRAP << *this << RESET " can't attack "
 					<< target << " no energy points left" << endl;
 		return;
 	}
 	else if (this->_hitPoints == 0)
 	{
-		std::cout	<< CLAPTRAP << *this << " can't attack "
+		std::cout	<< CLAPTRAP << *this << RESET " can't attack "
 					<< target << " because he's dead" << endl;
 		return;
 	}
-	std::cout	<< CLAPTRAP << *this << " attacked "
+	std::cout	<< CLAPTRAP << *this << RESET " attacked "
 				<< target << " and dealt "
 				<< this->_attackPoints << endl;
 	

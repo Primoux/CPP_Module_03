@@ -7,7 +7,7 @@
 class FragTrap : public ClapTrap
 {
   private:
-
+	bool _highFiveMod;
   
   public:
 	// CONSTRUCTOR
@@ -21,7 +21,7 @@ class FragTrap : public ClapTrap
 
 	// MEMBER FUNCTION
 	void	attack(const string &target);
-	void	highFivesGuys(void);
+	void	highFive(void);
 
 };
 std::ostream &operator<<(std::ostream &o, const FragTrap &obj);

@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 16:33:57 by enchevri          #+#    #+#             */
-/*   Updated: 2026/02/02 16:14:22 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2026/02/04 16:50:58 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,13 @@ int	main(void)
 {
 	// ========== CONSTRUCTORS TESTS ==========
 	title("DEFAULT CONSTRUCTOR");
-	ClapTrap claptrap;
-	std::cout << "------------" << endl;
+	{ClapTrap claptrap;
 	ScavTrap scavtrap;
-	std::cout << "------------" << endl;
-	FragTrap fragtrap;
+	FragTrap fragtrap;}
 
 	title("PARAMETERIZED CONSTRUCTOR");
 	ClapTrap clap("CL4P-TP");
-	std::cout << "------------" << endl;
 	ScavTrap scav("SC4V-TP");
-	std::cout << "------------" << endl;
 	FragTrap frag("FR4G-TP");
 
 	title("COPY CONSTRUCTOR");
@@ -47,34 +43,6 @@ int	main(void)
 	ScavTrap scavCopy(scav);
 	FragTrap fragCopy(frag);
 
-	// ========== CLAPTRAP COMBAT TESTS ==========
-	title("CLAPTRAP BASIC COMBAT");
-	ClapTrap hero("Hero");
-	ClapTrap enemy("Enemy");
-	
-	hero.attack("Enemy");
-	enemy.takeDamage(hero.getAttackPoints());
-	enemy.attack("Hero");
-	hero.takeDamage(enemy.getAttackPoints());
-	hero.beRepaired(5);
-	enemy.beRepaired(3);
-
-	// ========== SCAVTRAP COMBAT TESTS ==========
-	title("SCAVTRAP BASIC COMBAT");
-	ScavTrap warrior("Warrior");
-	ScavTrap opponent("Opponent");
-	
-	warrior.attack("Opponent");
-	opponent.takeDamage(warrior.getAttackPoints());
-	opponent.beRepaired(10);
-	opponent.attack("Warrior");
-	warrior.takeDamage(opponent.getAttackPoints());
-	warrior.beRepaired(15);
-
-	// ========== SCAVTRAP SPECIAL ABILITY ==========
-	title("GATE KEEPER MODE");
-	warrior.guardGate();
-	opponent.guardGate();
 
 	// ========== FRAGTRAP COMBAT TESTS ==========
 	title("FRAGTRAP BASIC COMBAT");
@@ -90,39 +58,56 @@ int	main(void)
 
 	// ========== FRAGTRAP SPECIAL ABILITY ==========
 	title("HIGH FIVE MODE");
-	berserker.highFivesGuys();
-	target.highFivesGuys();
+	berserker.highFive();
+	target.highFive();
 
 	// ========== ENERGY DEPLETION TEST ==========
 	title("ENERGY DEPLETION TEST");
-	ClapTrap tired("Tired");
+	FragTrap tiredFrag("Tired Clap");
 	
-	std::cout << BWHITE "Attempting 12 attacks (max is 10)..." RESET << endl;
-	for (int i = 0; i < 12; i++)
-		tired.attack("TargetDummy");
+	std::cout << BWHITE "Attempting 6 attacks (max is 5)..." RESET << endl;
+	tiredFrag.setEnergyPoints(5);
+	for (int i = 0; i < 6; i++)
+	{
+		tiredFrag.attack("TargetDummy");
+		tiredFrag.highFive();
+
+	}
 	
 	std::cout << BWHITE "\nTrying to repair with no energy..." RESET << endl;
-	tired.beRepaired(5);
+	tiredFrag.beRepaired(5);
+	
+	std::cout << BWHITE "\nTrying to repair with no energy..." RESET << endl;
+	tiredFrag.beRepaired(5);
 
 	// ========== DEATH TEST ==========
 	title("DEATH TEST");
-	ClapTrap victim("Victim");
-	ScavTrap killer("Killer");
-	FragTrap destroyer("Destroyer");
+	FragTrap victim("Victim");
 	
-	std::cout << BWHITE "Victim takes 15 damage (10 HP total)..." RESET << endl;
-	victim.takeDamage(15);
-	
+	std::cout << BWHITE "Victim takes 500 damage..." RESET << endl;
+	victim.takeDamage(500);
+
 	std::cout << BWHITE "\nDead victim tries to act..." RESET << endl;
 	victim.attack("Killer");
 	victim.beRepaired(10);
+	victim.beRepaired(10);
+	victim.highFive();
 
-	std::cout << BWHITE "\nKiller tries gate keeper mode..." RESET << endl;
-	killer.guardGate();
 
-	std::cout << BWHITE "\nDestroyer takes lethal damage and tries high five..." RESET << endl;
-	destroyer.takeDamage(150);
-	destroyer.highFivesGuys();
+	title("Test gate keeper mode");
+	ScavTrap guard("Guard");
+	std::cout << BWHITE "\nTry to put guard in gate keeper mode" RESET << endl;
+	
+	guard.guardGate();
+	std::cout << BWHITE "\nTry to take damage in gate keeper mode" RESET << endl;
+	guard.takeDamage(500);
+	std::cout << BWHITE "\nTry to take damage again after loosing the gatekeeper mode" RESET << endl;
+	guard.takeDamage(500);
+
+	title("Test high five mode");
+	FragTrap highFive("I just wanted someone");
+
+	highFive.highFive();
 
 	title("DESTRUCTORS");
 	return (0);

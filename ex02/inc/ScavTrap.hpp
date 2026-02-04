@@ -1,14 +1,14 @@
 #ifndef SCAVTRAP_HPP
-# define SCAVTRAP_HPP
+#define SCAVTRAP_HPP
 
-# include "ClapTrap.hpp"
-# include <ostream>
+#include "ClapTrap.hpp"
+#include <ostream>
 
 class ScavTrap : public ClapTrap
 {
   private:
+	bool _guardMod;
 
-  
   public:
 	// CONSTRUCTOR
 	ScavTrap();
@@ -20,8 +20,8 @@ class ScavTrap : public ClapTrap
 	ScavTrap &operator=(ScavTrap const &other);
 
 	// MEMBER FUNCTION
-	void	attack(const string &target);
-	void	guardGate(void);
+	void attack(const string &target);
+	void guardGate(void);
 };
 std::ostream &operator<<(std::ostream &o, const ScavTrap &obj);
 

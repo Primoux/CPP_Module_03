@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 16:33:57 by enchevri          #+#    #+#             */
-/*   Updated: 2026/02/04 13:48:31 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2026/02/04 16:22:29 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,13 @@ int	main(void)
 	ClapTrap tired("Tired");
 	tired.setAttackPoints(1);
 	
-	std::cout << BMAGENTA "Attempting 12 attacks (max is 10)..." RESET << endl;
+	std::cout << BWHITE "Attempting 12 attacks (max is 10)..." RESET << endl;
 	for (int i = 1; i < 13; i++)
 	{ 
 		std::cout << i << " "; tired.attack("TargetDummy"); 
 	}
 	
-	std::cout << BMAGENTA "\nTrying to repair with no energy..." RESET << endl;
+	std::cout << BWHITE "\nTrying to repair with no energy..." RESET << endl;
 	tired.beRepaired(5);
 	tired.takeDamage(500);
 
@@ -67,10 +67,10 @@ int	main(void)
 	ClapTrap victim("Victim");
 	ClapTrap killer("Killer");
 	
-	std::cout << BMAGENTA "Victim takes 15 damage (10 HP total)..." RESET << endl;
+	std::cout << BWHITE "Victim takes 15 damage (10 HP total)..." RESET << endl;
 	victim.takeDamage(15);
 	
-	std::cout << BMAGENTA "\nDead victim tries to act..." RESET << endl;
+	std::cout << BWHITE "\nDead victim tries to act..." RESET << endl;
 	victim.attack("Killer");
 	victim.beRepaired(10);
 
