@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 16:33:57 by enchevri          #+#    #+#             */
-/*   Updated: 2026/02/01 13:54:07 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2026/02/04 13:48:31 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int	main(void)
 	
 	std::cout << BMAGENTA "\nTrying to repair with no energy..." RESET << endl;
 	tired.beRepaired(5);
+	tired.takeDamage(500);
 
 	// ========== DEATH TEST ==========
 	title("DEATH TEST");

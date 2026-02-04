@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 06:56:29 by enchevri          #+#    #+#             */
-/*   Updated: 2026/02/04 13:38:15 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2026/02/04 13:45:24 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ FragTrap &FragTrap::operator=(FragTrap const &other)
 
 std::ostream &operator<<(std::ostream &o, const FragTrap &obj)
 {
-	return (o << obj.getName() << RESET);
+	return (o << obj.getName());
 }
 
 void FragTrap::attack(const string &target)

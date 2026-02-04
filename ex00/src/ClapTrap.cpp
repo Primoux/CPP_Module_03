@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 06:56:29 by enchevri          #+#    #+#             */
-/*   Updated: 2026/02/04 13:33:31 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2026/02/04 13:49:37 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,7 @@ void ClapTrap::takeDamage(unsigned int amount)
 		this->_hitPoints = _hitPoints - amount;
 
 	if (this->_hitPoints == 0)
-		std::cout << *this << " died RIP" << endl;
+		std::cout << *this << " died " BRED "RIP" RESET << endl;
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
