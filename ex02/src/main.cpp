@@ -6,7 +6,7 @@
 /*   By: enchevri <enchevri@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 16:33:57 by enchevri          #+#    #+#             */
-/*   Updated: 2026/02/02 15:57:20 by enchevri         ###   ########lyon.fr   */
+/*   Updated: 2026/02/02 16:14:22 by enchevri         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,11 +97,11 @@ int	main(void)
 	title("ENERGY DEPLETION TEST");
 	ClapTrap tired("Tired");
 	
-	std::cout << BGREEN "Attempting 12 attacks (max is 10)..." RESET << endl;
+	std::cout << BWHITE "Attempting 12 attacks (max is 10)..." RESET << endl;
 	for (int i = 0; i < 12; i++)
 		tired.attack("TargetDummy");
 	
-	std::cout << BGREEN "\nTrying to repair with no energy..." RESET << endl;
+	std::cout << BWHITE "\nTrying to repair with no energy..." RESET << endl;
 	tired.beRepaired(5);
 
 	// ========== DEATH TEST ==========
@@ -110,17 +110,17 @@ int	main(void)
 	ScavTrap killer("Killer");
 	FragTrap destroyer("Destroyer");
 	
-	std::cout << BGREEN "Victim takes 15 damage (10 HP total)..." RESET << endl;
+	std::cout << BWHITE "Victim takes 15 damage (10 HP total)..." RESET << endl;
 	victim.takeDamage(15);
 	
-	std::cout << BGREEN "\nDead victim tries to act..." RESET << endl;
+	std::cout << BWHITE "\nDead victim tries to act..." RESET << endl;
 	victim.attack("Killer");
 	victim.beRepaired(10);
 
-	std::cout << BGREEN "\nKiller tries gate keeper mode..." RESET << endl;
+	std::cout << BWHITE "\nKiller tries gate keeper mode..." RESET << endl;
 	killer.guardGate();
 
-	std::cout << BGREEN "\nDestroyer takes lethal damage and tries high five..." RESET << endl;
+	std::cout << BWHITE "\nDestroyer takes lethal damage and tries high five..." RESET << endl;
 	destroyer.takeDamage(150);
 	destroyer.highFivesGuys();
 
